@@ -69,6 +69,9 @@ class Invertible1x1Conv(torch.nn.Module):
         if reverse:
             if not hasattr(self, 'W_inverse'):
                 # Reverse computation
+                print('here')                
+                print(W)
+                print('here2')
                 W_inverse = W.inverse()
                 print(W_inverse)
                 W_inverse = Variable(W_inverse[..., None])
