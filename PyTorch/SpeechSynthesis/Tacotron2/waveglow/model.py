@@ -74,9 +74,10 @@ class Invertible1x1Conv(torch.nn.Module):
                 if z.type() == 'torch.cuda.HalfTensor' or z.type() == 'torch.HalfTensor':
                     W_inverse = W_inverse.half()
                 self.W_inverse = W_inverse
-            print(z.dtype, z.shape)
-            print(W_inverse.dtype, W_inverse.shape)            
+            print(z.dtype, z.shape, z.device, z.stride())
+            print(W_inverse.dtype, W_inverse.shape, W_inverse.device, W_inverse.stride())            
             z = F.conv1d(z, self.W_inverse, bias=None, stride=1, padding=0)
+            print('here')
             return z
         else:
             # Forward computation
