@@ -70,6 +70,7 @@ class Invertible1x1Conv(torch.nn.Module):
             if not hasattr(self, 'W_inverse'):
                 # Reverse computation
                 W_inverse = W.inverse()
+                print(W_inverse)
                 W_inverse = Variable(W_inverse[..., None])
                 if z.type() == 'torch.cuda.HalfTensor' or z.type() == 'torch.HalfTensor':
                     W_inverse = W_inverse.half()
